@@ -1,0 +1,10 @@
+Services:
+	- Define new control device
+	- Connect device to control device
+	- Get the status of the control device from all connected devices
+	- Get the status of connected devices from the control device
+	- Limit the number of connected devices according to control device
+
+Resources:
+	Control Device
+		-> Controlled Device
