@@ -1,3 +1,6 @@
+{"name":"MyDevice", "inputs":{"input1":"in", "input2":"in"}}
+{"id":3}
+
 Services:
 	- Define new control device
 	- Connect device to control device
@@ -7,4 +10,81 @@ Services:
 
 Resources:
 	Control Device
-		-> Controlled Device
+		-> Name
+		-> ID
+		-> Inputs
+			-> Input1
+			-> Input2
+			.
+			.
+			.
+		-> OutputDevices
+			-> OutputDevice1
+				-> ID
+				-> Value
+			.
+			.
+			.
+		-> LastPosted
+
+ - Create New Device -
+
+POST /devices
+{"name":"DeviceName", "inputs":{"input1":"in1", "input2":"in2", ...}}
+
+Ret:
+	201 Created
+	{"id":"1", "auth_key":"auth"}
+
+ - Update All Inputs -
+
+PUT /devices/:id/inputs
+{"auth_key":"auth", "inputs":{"input1":"in1", "input2":"in2", ...}}
+
+Ret:
+	202 Accepted
+
+	401 Unauthorized	// If auth_key is wrong
+
+ - Update One Input -
+
+PUT /devices/:id/inputs/:input_name
+{"auth_key":"auth", "input":"in"}
+
+Ret:
+	202 Accepted
+
+	401 Unauthorized	//If auth_key is wrong
+
+ - Get All Inputs -
+
+GET /devices/:id/inputs
+{"token":"token"}
+
+Ret:
+
+	200 OK
+	{"inputs":{"input1":"in1", "input2":"in2", ...}}
+
+	401 Unauthorized	// If token is wrong
+
+ - Create New OutputDevice -
+
+POST /devices/:id/outputs/:id
+{"token":"token", "name":"n"}
+
+Ret:
+	201 Created
+	{"id":4}
+
+	401 Unauthorized	// If token is wrong
+
+ - Relay Output -
+
+PUT /devices/:id/outputs/:id
+{"token":"token", "output":"out"}
+
+Ret:
+	202 Accepted
+	
+	401 Unauthorized	// If token is wrong
