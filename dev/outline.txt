@@ -1,6 +1,5 @@
-{"name":"MyDevice", "inputs":{"input1":"in", "input2":"in"}}
-{"id":3}
-
+ef7ffb985aeacaa6febe9e8f70499f
+"name":"A"
 Services:
 	- Define new control device
 	- Connect device to control device
@@ -21,6 +20,7 @@ Resources:
 		-> OutputDevices
 			-> OutputDevice1
 				-> ID
+				-> Name
 				-> Value
 			.
 			.
@@ -30,7 +30,7 @@ Resources:
  - Create New Device -
 
 POST /devices
-{"name":"DeviceName", "inputs":{"input1":"in1", "input2":"in2", ...}}
+{"name":"DeviceName", "inputs":{"input1":"in1", "input2":"in2"}}
 
 Ret:
 	201 Created
@@ -64,13 +64,13 @@ GET /devices/:id/inputs
 Ret:
 
 	200 OK
-	{"inputs":{"input1":"in1", "input2":"in2", ...}}
+	{"inputs":{"A":"5", "B":"6"}}
 
 	401 Unauthorized	// If token is wrong
 
  - Create New OutputDevice -
 
-POST /devices/:id/outputs/:id
+POST /devices/:id/outputs/
 {"token":"token", "name":"n"}
 
 Ret:
