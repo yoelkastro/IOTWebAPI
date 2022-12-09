@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/KOK29364/IOTWebAPI#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.17.3"
   }
 }
